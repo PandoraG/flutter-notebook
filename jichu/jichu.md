@@ -385,6 +385,17 @@ CustomCard(
 # 4、项目结构、资源、依赖和本地化
 
 ## 4.1 项目的结构时怎样子的？
+```
+projextnam
+   android      - Android部分的工程文件
+   build        - 项目的构建输出目录
+   ios          - ios部分的工程文件
+   lib          - 项目中的Dart源文件
+      src         - 包含其他源码的文件
+      main.dart   - 自动生成的项目入口文件，类似于RN的index.js文件
+   test           - 测试相关文件
+   pubspec.yaml   - 项目依赖配置文件类似于RN的package.json
+```     
 
 ## 4.2 在哪里归档图片资源以及如何处理不同分辨率？
 
