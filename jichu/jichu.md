@@ -543,7 +543,11 @@ dependencies:
 
 推荐一个用于查找Flutter插件的网站： Pub site。
 
+
+
+
 # 5、认识视图（Views）
+https://www.devio.org/2019/03/16/flutter-views/
 
 
 # 6、布局与列表
@@ -553,9 +557,12 @@ dependencies:
 
 
 # 8、路由与导航
+https://www.devio.org/2019/03/31/flutter-router-navigator/
 
 
 # 9、线程与异步UI
+
+https://www.devio.org/2019/03/16/thread-and-asynchronous-ui/
 
 
 # 10、手势检测及触摸事件处理
