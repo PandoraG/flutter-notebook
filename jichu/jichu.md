@@ -399,9 +399,149 @@ projextnam
 
 ## 4.2 在哪里归档图片资源以及如何处理不同分辨率？
 
+ - 虽然Android将resources和assets区别对待，但在Flutter中它们都会被作为assets处理，所 
+有存在于Android上 `res / drawable- *` 文件夹中的资源都放在Flutter的assets文件夹中。 
+ - 与Android类似，iOS同样将images和assets作为不同的东西，而Flutter中只有assets。 
+被放到iOS中Images.xcasset文件央下的资源在Rutter中被放到了 assets文件央中。
+
+在 Flutter 中 assets 可以是任意类型的文件，而不仅仅是图片。 例如，你可以把json文件放置到my-assets文件夹中。
+```
+my-assets/data.json
+```
+
+记得在pubspec.yaml文件中声明assets :
+```
+assets:
+  - my-assets/data.json
+```
+然后在代码中我们可以通过AssetBundle来访问它:
+
+```dart
+import 'dart:async' show Future;
+import 'package:f1utter/services.dart' show rootBundle;
+Future<String> loadAsset() async {
+    return await rpotBundle.loadString('my-assets/data.json');
+}
+```
+
+对于图片，Flutter像iOS—样，遵循了一个简单的基于像素密度的格式。Image assets可能是1.Ox 2.0x 3.0x或是其他的任何倍数。这个devicePixelRatio表示了物理像素到单个逻辑像素的比率。
+
+**Android不同像素密度的图片和Flutter的像素比率的对应关系**
+```js
+ldpi      0.75px
+mdpi      1.0px
+hdpi      1.5px
+xhdpi     2.0px
+xxhdpi    3.0px
+xxxhdpi   4.0px
+```
+
+Assets可以被放置到任何属性文件夹中一一Rutter并没有预先定义的文件结构。我们需要在pubspec.yaml文件中声明assets的位置，然后Flutter会把他们识别出来。
+
+举个例子，要把_个名为my_icon.png的图片放到Flutter工程中，你可能想要把它放到images文件夹中。把图片（1.0x)放置到images文件央中，并把其它分辨率的图片放在对应的子文件央中，并接上合适的比例系数，就像这样：
+
+```
+images/my_icon.png          // Base: 1.0x image
+images/2.0x/my一icon■png    // 2.0x image
+images/3.0x/my一icon.png     //3.0x image
+```
+
+接下来就可以在pubspec.yaml文件中这样声明这个图片资源:
+```
+asserts: 
+  - images/my_icon.png
+```
+
+现在，我们就可以借助Assetlmage来访问它了。
+
+```
+return AssetImage('images/a_dot_burr.jpeg');
+```
+
+也可以通过 Image widget直接使用：
+```
+@override
+Widget build(BuildContext context) {
+    return Image.asset("images/my_image.png");
+}
+```
+
+
 ## 4.3 如何归档strings资源，以及如何处理不同语言？
 
+不像iOS拥有一个Localizaple. strings文件，Flutter目前没有专门的字符串资源系统。目 
+前，最佳做法是将strings资源作为静态字段保存在类中。例如：
+
+```dart
+class Strings {
+    static String welcomeMessage = "Welcome To Flutter";
+}
+```
+
+然后像如下方式来访问它:
+```dart
+Text(Strings.welcomeMessage)
+```
+默认情况下，Flutter只支持美式英语字符串。如果你要支持其他语言，请引入 `flutter_Localizations`包。你可能也要引入 inti 包来支持其他的 i10n 机制，比如日期/时间格式化。
+
+```
+dependencies:
+  # ...
+  flutte「一localizations: 
+    sdk: flutter
+  intl: "^0.15.6"
+```
+要使用 flutter_localizations 包 ， 还需要在 appwidget 中指定 localizationsDelegates 和 supportedLocales。
+
+```js
+import 'packagerflutter_localizations/flutter_localizations.dart';
+
+MaterialApp(
+    localizationsDelegates: [
+        // Add app-specific localization delegate[s] here
+        GlobaIMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+    ],
+    supportedLocales: [
+        const Locale(,en'# 'US'), // English 
+        const Locale('he', 'IL'), // Hebrew 
+        // ... other locales the app supports
+    ], // ...
+}
+
+```
+
+这些代理包括了实际的本地化值，并且 supportedLocales 定义了 App支持哪些地区。上面的例子使用了一个 MaterialApp, 所以它既有GlobaIWidgetsLocalizations 用于基础 widgets, 也有 MateriaIWidgetsLocalizations 用于 Material wigets 的本地化。如果你使用 
+WidgetsApp，则无需包括后者。注意，这两个代理虽然包括了“默认”值，但如果你想让你的App 本地化，你仍需要提供一或多个代理作为你的App本她化副本。
+
+当初始化时，WidgetsApp或MaterialApp会使用你指定的代理为你创建一个Localizations widget。Localizations widget可以随时从当前上下文中访问设备的地点，或者使用 Window.locale。
+
+要访问本地化文件，使用Localizations.of()方法来访问提供代理的特定本地化类。如需翻译，使用intl_translation包来取出翻译副本到arb文件中。把它们引入App中，并用inti来使用它们。
+
+更多Flutter中国际化和本地化的细节，请访问internationalization guide , 里面有不使用inti包的 示例代码。
+
+> 注意，在Flutter 1.0 beta 2之前，在Flutter中定义的assets不能再原生一侧被访问。原生定义的资源在Flutter中也不可用，因为它们在独立的文件夹中。
+
 ## 4.4 如何添加Flutter项目所需的依赖？
+
+- 在Android中，你可以在Gradle文件来添加依赖项目；
+- 在iOS中，通常把依赖添加到Podfile中；
+- 在RN中，通常是由package.json来管理项目依赖；
+
+Flutter 使用Dart构建系统和Pub包管理器来处理依赖。这些工具将Android和iOS native包装应用程序的构建委派给响应的构建系统。
+
+```
+dependencies:
+   flutter:
+       sdk: flutter
+    google_sign_in: ^3.0.3
+```
+
+> 在Flutter中，虽然在Flutter项目中的Android文件夹下有Gradle文件，但只有在添加平台相关需求的依赖关系时才会使用到这些文件。否则，应该使用pubspec.yaml来声明用于Flutter的外部依赖项。
+
+> iOS也一样，如果你的Flutter工程中的iOS文件夹中有Podfile， 请仅在添加iOS平台相关依赖时使用它。否则，应该使用pubspec.yaml来声明用于Flutter的外部依赖项。
+
+推荐一个用于查找Flutter插件的网站： Pub site。
 
 # 5、认识视图（Views）
 
