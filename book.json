@@ -8,7 +8,7 @@
     "plugins": [
         "highlight",
         "-search",
-        "theme-comscore",
+        "-theme-comscore",
         "-anchor-navigation-ex-toc",
         "fontsettings",
         "sharing",

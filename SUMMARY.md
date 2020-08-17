@@ -9,3 +9,5 @@
 
 ## 进阶 <a id="advance"></a>
 
+* [Flutter - BLoC模式入门](/jichu/bloc.md)
+
