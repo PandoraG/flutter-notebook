@@ -1,0 +1,611 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Flutter | 状态管理(3) - BLoC 模式入门 · Flutter 学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="G-Dragon">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="rxdart.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../jichu/dart-getting.html">
+            
+                <a href="../jichu/dart-getting.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    dart 基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../jichu/what-is-declarative-ui.html">
+            
+                <a href="../jichu/what-is-declarative-ui.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    什么是声明式 UI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../jichu/flutter-getting.html">
+            
+                <a href="../jichu/flutter-getting.html">
+            
+                    
+                        <b>2.3.</b>
+                    
+                    Flutter 入门基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../jichu/project-structure-resources.html">
+            
+                <a href="../jichu/project-structure-resources.html">
+            
+                    
+                        <b>2.4.</b>
+                    
+                    项目结构、资源、依赖和本地化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../jichu/know-view.html">
+            
+                <a href="../jichu/know-view.html">
+            
+                    
+                        <b>2.5.</b>
+                    
+                    认识视图（Views）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                        <b>2.6.</b>
+                    
+                    布局与列表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../jichu/state-manage.html">
+            
+                <a href="../jichu/state-manage.html">
+            
+                    
+                        <b>2.7.</b>
+                    
+                    状态管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../jichu/route-and-navigation.html">
+            
+                <a href="../jichu/route-and-navigation.html">
+            
+                    
+                        <b>2.8.</b>
+                    
+                    路由与导航
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" >
+            
+                <span>
+            
+                    
+                        <b>2.9.</b>
+                    
+                    手势检测及触摸事件处理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" >
+            
+                <span>
+            
+                    
+                        <b>2.10.</b>
+                    
+                    主题和文字处理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" >
+            
+                <span>
+            
+                    
+                        <b>2.11.</b>
+                    
+                    表单输入与富文本
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" >
+            
+                <span>
+            
+                    
+                        <b>2.12.</b>
+                    
+                    调用硬件、第三方服务以及平台交互、通知
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">进阶</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903686787825678">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    Dart | 什么是 Mixin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="stream.html">
+            
+                <a href="stream.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    Dart | 什么是 Stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="dio-getting.html">
+            
+                <a href="dio-getting.html">
+            
+                    
+                        <b>3.3.</b>
+                    
+                    Http 网络请求-dio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903777565147150">
+            
+                    
+                        <b>3.4.</b>
+                    
+                    深入理解 BuildContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903811870359559">
+            
+                    
+                        <b>3.5.</b>
+                    
+                    Flutter | 深入浅出 Key
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903780253728781">
+            
+                    
+                        <b>3.6.</b>
+                    
+                    Flutter | 状态管理特别篇 —— Provide
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903864852807694">
+            
+                    
+                        <b>3.7.</b>
+                    
+                    Flutter | 状态管理指南篇——Provider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903680844496904">
+            
+                    
+                        <b>3.8.</b>
+                    
+                    Flutter | 状态管理(1) - Scope Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" >
+            
+                <span>
+            
+                    
+                        <b>3.9.</b>
+                    
+                    Flutter | 状态管理(2) - react
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.10" data-path="bloc.html">
+            
+                <a href="bloc.html">
+            
+                    
+                        <b>3.10.</b>
+                    
+                    Flutter | 状态管理(3) - BLoC 模式入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="rxdart.html">
+            
+                <a href="rxdart.html">
+            
+                    
+                        <b>3.11.</b>
+                    
+                    Flutter | 状态管理(4) - RxDart
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Flutter | 状态管理(3) - BLoC 模式入门</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>BLoC&#x662F; <code>Business Logic Components</code> &#x7684;&#x7F29;&#x5199;, &#x662F;paolo soares &#x548C; cong hui &#x5728;2018&#x5E74;Google dartconf&#x4E0A;&#x63D0;&#x51FA;&#x7684;&#x3002;BLoC&#x7684;&#x54F2;&#x5B66;&#x5C31;&#x662F;app&#x91CC;&#x7684;&#x6240;&#x6709;&#x4E1C;&#x897F;&#x90FD;&#x5E94;&#x8BE5;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x4E8B;&#x4EF6;&#x6D41;&#xFF1A;&#x4E00;&#x90E8;&#x5206;&#x7EC4;&#x4EF6;&#x8BA2;&#x9605;&#x4E8B;&#x4EF6;&#xFF0C;&#x53E6;&#x4E00;&#x90E8;&#x5206;&#x7EC4;&#x4EF6;&#x5219;&#x54CD;&#x5E94;&#x4E8B;&#x4EF6;&#x3002;BLoC&#x5C45;&#x4E2D;&#x7BA1;&#x7406;&#x8FD9;&#x4E9B;&#x4F1A;&#x8BDD;&#x3002;Dart&#x751A;&#x81F3;&#x628A;&#x6D41;&#xFF08;Stream&#xFF09;&#x5185;&#x7F6E;&#x5230;&#x4E86;&#x8BED;&#x8A00;&#x672C;&#x8EAB;&#x91CC;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x6A21;&#x5F0F;&#x6700;&#x597D;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x662F;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x5F15;&#x5165;&#x4EFB;&#x4F55;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x5B66;&#x4E60;&#x5176;&#x4ED6;&#x7684;&#x8BED;&#x6CD5;&#x3002;&#x6240;&#x6709;&#x9700;&#x8981;&#x7684;&#x5185;&#x5BB9;Flutter&#x90FD;&#x6709;&#x63D0;&#x4F9B;&#x3002;</p>
+<h1 id="&#x6DF1;&#x5165;-bloc">&#x6DF1;&#x5165; BLoC</h1>
+<p>BLoC&#x57FA;&#x672C;&#x5C31;&#x662F;&#x57FA;&#x4E8E;Dart&#x7684;&#x6D41;&#xFF08;Stream&#xFF09;&#x7684;&#x3002;</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/6/8/17291af7c5ec4eaf?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>&#x6D41;&#xFF0C;&#x548C;Future&#x4E00;&#x6837;&#xFF0C;&#x4E5F;&#x662F;&#x5728; <code>dart:async</code> &#x5305;&#x91CC;&#x3002;&#x4E00;&#x4E2A;&#x6D41;&#x5C31;&#x50CF;&#x4E00;&#x4E2A;future&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x662F;&#x6D41;&#x4E0D;&#x53EA;&#x662F;&#x5F02;&#x6B65;&#x7684;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x6D41;&#x53EF;&#x4EE5;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x7684;&#x63A8;&#x79FB;&#x8FD4;&#x56DE;&#x5F88;&#x591A;&#x7684;&#x503C;&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A;future&#x6700;&#x7EC8;&#x662F;&#x4E00;&#x4E2A;&#x503C;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x4E00;&#x4E2A;&#x6D41;&#x5C31;&#x662F;&#x4F1A;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x503C;&#x3002;</p>
+<p><code>dart:async</code> &#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A; <code>StreamController</code> &#x7C7B;&#x3002;&#x6D41;&#x63A7;&#x5236;&#x5668;&#x7BA1;&#x7406;&#x7684;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x6D41;&#x548C;&#x69FD;&#xFF08;sink&#xFF09;&#x3002;sink&#x548C;&#x6D41;&#x76F8;&#x5BF9;&#x5E94;&#xFF0C;&#x6D41;&#x63D0;&#x4F9B;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#xFF0C;sink&#x63A5;&#x53D7;&#x8F93;&#x5165;&#x503C;&#x3002;</p>
+<p>&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF0C;BLoC&#x7528;&#x6765;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;sink&#x63A5;&#x53D7;&#x8F93;&#x5165;&#xFF0C;&#x6D41;&#x8F93;&#x51FA;&#x3002;</p>
+<h1 id="&#x63A8;&#x8350;&#x9605;&#x8BFB;">&#x63A8;&#x8350;&#x9605;&#x8BFB;</h1>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1345645" target="_blank">flutter&#x4E2D;&#x4F7F;&#x7528;BloC&#x6A21;&#x5F0F;</a></li>
+<li><a href="https://juejin.im/post/6844904183204691982" target="_blank">Flutter - BLoC&#x6A21;&#x5F0F;&#x5165;&#x95E8;</a></li>
+<li><a href="https://juejin.im/post/6844903860591394830" target="_blank">[&#x8BD1;] &#x5728; flutter &#x4E2D;&#x9AD8;&#x6548;&#x5730;&#x4F7F;&#x7528; BLoC &#x6A21;&#x5F0F;</a></li>
+<li><a href="https://github.com/windinwork/bloc_app" target="_blank">bloc</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="rxdart.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Flutter | 状态管理(4) - RxDart">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Flutter | 状态管理(3) - BLoC 模式入门","level":"3.10","depth":1,"next":{"title":"Flutter | 状态管理(4) - RxDart","level":"3.11","depth":1,"path":"advance/rxdart.md","ref":"advance/rxdart.md","articles":[]},"previous":{"title":"Flutter | 状态管理(2) - react","level":"3.9","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight","-search","-theme-comscore","-anchor-navigation-ex-toc","fontsettings","sharing","search-plus","intopic-toc","livereload"],"root":".","styles":{"website":"./styles/website.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":{"en":"In this article"},"maxDepth":4,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"highlight":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"search-plus":{},"livereload":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false}},"theme":"default","author":"G-Dragon","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Flutter 学习笔记","language":"zh-hans","gitbook":">=3.0.0","description":""},"file":{"path":"advance/bloc.md","mtime":"2020-08-18T07:48:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-30T02:58:42.728Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+
+    </body>
+</html>
+
