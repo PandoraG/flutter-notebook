@@ -1,0 +1,873 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>库 dart:ui · Flutter 学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="G-Dragon">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="dart_core.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../dart-getting.html">
+            
+                <a href="../dart-getting.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    dart 基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../what-is-declarative-ui.html">
+            
+                <a href="../what-is-declarative-ui.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    什么是声明式 UI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../flutter-getting.html">
+            
+                <a href="../flutter-getting.html">
+            
+                    
+                        <b>2.3.</b>
+                    
+                    Flutter 入门基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../project-structure-resources.html">
+            
+                <a href="../project-structure-resources.html">
+            
+                    
+                        <b>2.4.</b>
+                    
+                    项目结构、资源、依赖和本地化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../know-view.html">
+            
+                <a href="../know-view.html">
+            
+                    
+                        <b>2.5.</b>
+                    
+                    认识视图（Views）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                        <b>2.6.</b>
+                    
+                    布局与列表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../state-manage.html">
+            
+                <a href="../state-manage.html">
+            
+                    
+                        <b>2.7.</b>
+                    
+                    状态管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../route-and-navigation.html">
+            
+                <a href="../route-and-navigation.html">
+            
+                    
+                        <b>2.8.</b>
+                    
+                    路由与导航
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" >
+            
+                <span>
+            
+                    
+                        <b>2.9.</b>
+                    
+                    手势检测及触摸事件处理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" >
+            
+                <span>
+            
+                    
+                        <b>2.10.</b>
+                    
+                    主题和文字处理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" >
+            
+                <span>
+            
+                    
+                        <b>2.11.</b>
+                    
+                    表单输入与富文本
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" >
+            
+                <span>
+            
+                    
+                        <b>2.12.</b>
+                    
+                    调用硬件、第三方服务以及平台交互、通知
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Dart SDK</li>
+        
+        
+    
+        <li class="chapter active" data-level="3.1" data-path="dart_ui.html">
+            
+                <a href="dart_ui.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    库 dart:ui
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="dart_core.html">
+            
+                <a href="dart_core.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    库 dart:core
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="dart_async.html">
+            
+                <a href="dart_async.html">
+            
+                    
+                        <b>3.3.</b>
+                    
+                    库 dart:async
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="dart_collection.html">
+            
+                <a href="dart_collection.html">
+            
+                    
+                        <b>3.4.</b>
+                    
+                    库 dart:collection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="dart_convert.html">
+            
+                <a href="dart_convert.html">
+            
+                    
+                        <b>3.5.</b>
+                    
+                    库 dart:convert
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="dart_io.html">
+            
+                <a href="dart_io.html">
+            
+                    
+                        <b>3.6.</b>
+                    
+                    库 dart:io
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Flutter Widget</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../flutter_widget/listTile.html">
+            
+                <a href="../flutter_widget/listTile.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    listTile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../flutter_widget/listView.html">
+            
+                <a href="../flutter_widget/listView.html">
+            
+                    
+                        <b>4.2.</b>
+                    
+                    listView
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Flutter package</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../flutter_package/shared_preferences.html">
+            
+                <a href="../flutter_package/shared_preferences.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    package:shared_preferences
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../flutter_package/dio.html">
+            
+                <a href="../flutter_package/dio.html">
+            
+                    
+                        <b>5.2.</b>
+                    
+                    package:dio/dio.dart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../flutter_package/fluttertoast.html">
+            
+                <a href="../flutter_package/fluttertoast.html">
+            
+                    
+                        <b>5.3.</b>
+                    
+                    package:fluttertoast
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../flutter_package/cached_network_image.html">
+            
+                <a href="../flutter_package/cached_network_image.html">
+            
+                    
+                        <b>5.4.</b>
+                    
+                    package:cached_network_image
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../flutter_package/flukit.html">
+            
+                <a href="../flutter_package/flukit.html">
+            
+                    
+                        <b>5.5.</b>
+                    
+                    package:flukit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="../flutter_package/flutter_web_plugins.html">
+            
+                <a href="../flutter_package/flutter_web_plugins.html">
+            
+                    
+                        <b>5.6.</b>
+                    
+                    package:flutter_web_plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="../flutter_package/flutter_localizations.html">
+            
+                <a href="../flutter_package/flutter_localizations.html">
+            
+                    
+                        <b>5.7.</b>
+                    
+                    package:flutter_localizations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="../flutter_package/provider.html">
+            
+                <a href="../flutter_package/provider.html">
+            
+                    
+                        <b>5.8.</b>
+                    
+                    package:provider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">进阶</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903686787825678">
+            
+                    
+                        <b>6.1.</b>
+                    
+                    Dart | 什么是 Mixin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../advance/stream.html">
+            
+                <a href="../../advance/stream.html">
+            
+                    
+                        <b>6.2.</b>
+                    
+                    Dart | 什么是 Stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../../advance/dio-getting.html">
+            
+                <a href="../../advance/dio-getting.html">
+            
+                    
+                        <b>6.3.</b>
+                    
+                    Http 网络请求-dio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903777565147150">
+            
+                    
+                        <b>6.4.</b>
+                    
+                    深入理解 BuildContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903811870359559">
+            
+                    
+                        <b>6.5.</b>
+                    
+                    Flutter | 深入浅出 Key
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903780253728781">
+            
+                    
+                        <b>6.6.</b>
+                    
+                    Flutter | 状态管理特别篇 —— Provide
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903864852807694">
+            
+                    
+                        <b>6.7.</b>
+                    
+                    Flutter | 状态管理指南篇——Provider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903680844496904">
+            
+                    
+                        <b>6.8.</b>
+                    
+                    Flutter | 状态管理(1) - Scope Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.9" >
+            
+                <span>
+            
+                    
+                        <b>6.9.</b>
+                    
+                    Flutter | 状态管理(2) - react
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.10" data-path="../../advance/bloc.html">
+            
+                <a href="../../advance/bloc.html">
+            
+                    
+                        <b>6.10.</b>
+                    
+                    Flutter | 状态管理(3) - BLoC 模式入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.11" data-path="../../advance/rxdart.html">
+            
+                <a href="../../advance/rxdart.html">
+            
+                    
+                        <b>6.11.</b>
+                    
+                    Flutter | 状态管理(4) - RxDart
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >库 dart:ui</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<p><a href="https://api.flutter.dev/flutter/dart-ui/dart-ui-library.html" target="_blank">&#x9605;&#x8BFB;&#x539F;&#x6587;</a></p>
+</blockquote>
+<h1 id="dartui-&#x5E93;">dart:ui &#x5E93;</h1>
+<p>Flutter &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x5185;&#x7F6E;&#x7C7B;&#x578B;&#x548C;&#x6838;&#x5FC3;&#x539F;&#x8BED;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&apos;dart:ui&apos;</span>
+</code></pre>
+<p>&#x8BE5;&#x5E93;&#x63D0;&#x4F9B; Flutter &#x6846;&#x67B6; &#x7528;&#x4E8E;&#x5F15;&#x5BFC;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF08;bootstrap applications&#xFF09;&#x7684;&#x6700;&#x4F4E;&#x7EA7;&#x522B;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x7528;&#x4E8E;&#x9A71;&#x52A8;&#x8F93;&#x5165;&#xFF0C;&#x56FE;&#x5F62;&#x6587;&#x672C;&#xFF0C;&#x5E03;&#x5C40;&#x548C;&#x6E32;&#x67D3;&#x5B50;&#x7CFB;&#x7EDF;&#x7684;&#x7C7B;&#x3002;</p>
+<h2 id="1-&#x7C7B;">1. &#x7C7B;</h2>
+<h2 id="2-&#x5C5E;&#x6027;">2. &#x5C5E;&#x6027;</h2>
+<h3 id="21-channelbuffers-&#x2192;-channelbuffers">2.1 channelBuffers &#x2192; ChannelBuffers</h3>
+<p>&#x5141;&#x8BB8;&#x5728;&#x5F15;&#x64CE;&#x548C;&#x6846;&#x67B6;&#x4E4B;&#x95F4;&#x5B58;&#x50A8;&#x6D88;&#x606F;&#x7684; ChannelBuffers&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x65E0;&#x6CD5;&#x4F20;&#x9012;&#x7684;&#x6D88;&#x606F;&#x4F1A;&#x5B58;&#x50A8;&#x5728;&#x6B64;&#x5904;&#xFF0C;&#x76F4;&#x5230;&#x6846;&#x67B6;&#x80FD;&#x591F;&#x5904;&#x7406;&#x5B83;&#x4EEC;&#x4E3A;&#x6B62;&#x3002; <a href="https://api.flutter.dev/flutter/dart-ui/channelBuffers.html" target="_blank">[...]</a></p>
+<p>final</p>
+<h3 id="22-window-&#x2192;-window">2.2 window &#x2192; Window</h3>
+<p>Window &#x5355;&#x4F8B;. <a href="https://api.flutter.dev/flutter/dart-ui/window.html" target="_blank">[...]</a></p>
+<p>final</p>
+<h2 id="3-&#x65B9;&#x6CD5;">3. &#x65B9;&#x6CD5;</h2>
+<h2 id="4-&#x679A;&#x4E3E;">4. &#x679A;&#x4E3E;</h2>
+<h2 id="5-&#x7C7B;&#x578B;&#x5B9A;&#x4E49;">5. &#x7C7B;&#x578B;&#x5B9A;&#x4E49;</h2>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="dart_core.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 库 dart:core">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"库 dart:ui","level":"3.1","depth":1,"next":{"title":"库 dart:core","level":"3.2","depth":1,"path":"jichu/dart_sdk/dart_core.md","ref":"jichu/dart_sdk/dart_core.md","articles":[]},"previous":{"title":"调用硬件、第三方服务以及平台交互、通知","level":"2.12","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight","-search","-theme-comscore","-anchor-navigation-ex-toc","fontsettings","sharing","search-plus","intopic-toc"],"root":".","styles":{"website":"./styles/website.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":{"en":"In this article"},"maxDepth":4,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"highlight":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"search-plus":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false}},"theme":"default","author":"G-Dragon","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Flutter 学习笔记","language":"zh-hans","gitbook":">=3.0.0","description":""},"file":{"path":"jichu/dart_sdk/dart_ui.md","mtime":"2020-09-02T07:19:49.278Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-02T08:14:43.679Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+
+    </body>
+</html>
+

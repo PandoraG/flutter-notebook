@@ -1,32 +1,31 @@
-[原文地址](https://pub.dev/packages/provider)
+> [原文地址](https://pub.dev/packages/provider)
+>
+> https://flutter.dev/docs/development/packages-and-plugins/favorites
 
-
-
-
-[<img src="https://raw.githubusercontent.com/rrousselGit/provider/master/resources/flutter_favorite.png" width="200" />](https://flutter.dev/docs/development/packages-and-plugins/favorites)
+![](https://raw.githubusercontent.com/rrousselGit/provider/master/resources/flutter_favorite.png)
 
 [InheritedWidget]的包装
 使它们更易于使用和重用。
 
-通过使用“provider”而不是手动编写[InheritedWidget]，您将获得： 
+通过使用“provider”而不是手动编写[InheritedWidget]，您将获得：
 
 - 简化资源的分配/处置
 - 延迟加载
 - 每次制作新课程都大大减少了样板
-- devtools友好
+- devtools 友好
 - 消费这些[InheritedWidget]的常用方法（请参见[Provider.of] /[Consumer] /[Selector]）
 - 通过侦听机制呈指数增长的类，提高了类的可伸缩性
-  （例如，[ChangeNotifier]，它是用于分发通知的O（N²））。
+  （例如，[ChangeNotifier]，它是用于分发通知的 O（N²））。
 
 要了解有关`provider`的更多信息，请参见其 [documentation](https://pub.dev/documentation/provider/latest/provider/provider-library.html).
 
-也可以看看： 
+也可以看看：
 
-- [官方Flutter状态管理文档](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple), 展示了如何使用“ provider” + [ChangeNotifier]
+- [官方 Flutter 状态管理文档](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple), 展示了如何使用“ provider” + [ChangeNotifier]
 - [flutter 使用实例](https://github.com/brianegan/flutter_architecture_samples/tree/master/change_notifier_provider), 其中包含使用“ provider”实现的该应用 + [ChangeNotifier]
 - [flutter_bloc](https://github.com/felangel/bloc) and [Mobx](https://github.com/mobxjs/mobx.dart), 在他们的架构中使用`provider`
 
-## 从v3.x.0迁移到v4.0.0 
+## 从 v3.x.0 迁移到 v4.0.0
 
 - The parameters `builder` and `initialBuilder` of providers are removed.
 
@@ -73,7 +72,7 @@
 
 ## 用法
 
-### 暴露值 
+### 暴露值
 
 #### 暴露一个新的对象实例
 
@@ -318,7 +317,7 @@ From there, if you click on one provider, you will be able to see the value it e
 
 (screenshot of the devtools using the `example` folder)
 
-#### devtool仅显示“ MyClass实例”。我能做什么？ 
+#### devtool 仅显示“ MyClass 实例”。我能做什么？
 
 By default, the devtool relies on `toString`, which defaults to "Instance of MyClass".
 
@@ -369,7 +368,7 @@ To have something more useful, you have two solutions:
   }
   ```
 
-#### 在`initState`中获取Provider时出现异常。我能做什么？
+#### 在`initState`中获取 Provider 时出现异常。我能做什么？
 
 This exception happens because you're trying to listen to a provider from a
 life-cycle that will never ever be called again.
@@ -663,14 +662,14 @@ ChangeNotifierProvider<ProviderInterface>(
 
 所有可用对象的完整列表是在[here](https://pub.dev/documentation/provider/latest/provider/provider-library.html)
 
-| name                                                                                                                          | description                                                                                                                                                            |
-| ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Provider](https://pub.dartlang.org/documentation/provider/latest/provider/Provider-class.html)                               | provider 的最基本形式。无论值是多少，它都会获取一个值并将其公开。                                                                              |
-| [ListenableProvider](https://pub.dartlang.org/documentation/provider/latest/provider/ListenableProvider-class.html)           | 侦听对象的特定Provider。每当调用侦听器时，ListenableProvider都会侦听该对象并要求依赖于该对象的小部件进行重建。 |
-| [ChangeNotifierProvider](https://pub.dartlang.org/documentation/provider/latest/provider/ChangeNotifierProvider-class.html)   | 用于ChangeNotifier的ListenableProvider的规范。必要时它将自动调用`ChangeNotifier.dispose`。   |
-| [ValueListenableProvider](https://pub.dartlang.org/documentation/provider/latest/provider/ValueListenableProvider-class.html) | 听一个ValueListenable，只暴露`ValueListenable.value`。    |
-| [StreamProvider](https://pub.dartlang.org/documentation/provider/latest/provider/StreamProvider-class.html)   | 收听流，并公开发出的最新值。|
-| [FutureProvider](https://pub.dartlang.org/documentation/provider/latest/provider/FutureProvider-class.html)                   | 接受“Future”并在将来完成时更新依赖项。                                                                                |
+| name                                                                                                                          | description                                                                                                      |
+| ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| [Provider](https://pub.dartlang.org/documentation/provider/latest/provider/Provider-class.html)                               | provider 的最基本形式。无论值是多少，它都会获取一个值并将其公开。                                                |
+| [ListenableProvider](https://pub.dartlang.org/documentation/provider/latest/provider/ListenableProvider-class.html)           | 侦听对象的特定 Provider。每当调用侦听器时，ListenableProvider 都会侦听该对象并要求依赖于该对象的小部件进行重建。 |
+| [ChangeNotifierProvider](https://pub.dartlang.org/documentation/provider/latest/provider/ChangeNotifierProvider-class.html)   | 用于 ChangeNotifier 的 ListenableProvider 的规范。必要时它将自动调用`ChangeNotifier.dispose`。                   |
+| [ValueListenableProvider](https://pub.dartlang.org/documentation/provider/latest/provider/ValueListenableProvider-class.html) | 听一个 ValueListenable，只暴露`ValueListenable.value`。                                                          |
+| [StreamProvider](https://pub.dartlang.org/documentation/provider/latest/provider/StreamProvider-class.html)                   | 收听流，并公开发出的最新值。                                                                                     |
+| [FutureProvider](https://pub.dartlang.org/documentation/provider/latest/provider/FutureProvider-class.html)                   | 接受“Future”并在将来完成时更新依赖项。                                                                           |
 
 [provider.of]: https://pub.dev/documentation/provider/latest/provider/Provider/of.html
 [selector]: https://pub.dev/documentation/provider/latest/provider/Selector-class.html
@@ -680,3 +679,6 @@ ChangeNotifierProvider<ProviderInterface>(
 [inheritedprovider]: https://pub.dev/documentation/provider/latest/provider/InheritedProvider-class.html
 [diagnosticabletreemixin]: https://api.flutter.dev/flutter/foundation/DiagnosticableTreeMixin-mixin.html
 
+# 推荐阅读
+
+- [Flutter 状态管理之 Provider](https://juejin.im/post/6844903846334955534)

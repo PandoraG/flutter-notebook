@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/Users/g-dragon/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/g-dragon/MyBook/flutter-notebook/docs/docs/example/BLoc/Flutter_Bloc_Movie"
+export "FLUTTER_APPLICATION_PATH=/Users/g-dragon/Desktop/Flutter_Bloc_Movie"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"

@@ -1,0 +1,899 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>库 dart:async · Flutter 学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="G-Dragon">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="dart_collection.html" />
+    
+    
+    <link rel="prev" href="dart_core.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../dart-getting.html">
+            
+                <a href="../dart-getting.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    dart 基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../what-is-declarative-ui.html">
+            
+                <a href="../what-is-declarative-ui.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    什么是声明式 UI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../flutter-getting.html">
+            
+                <a href="../flutter-getting.html">
+            
+                    
+                        <b>2.3.</b>
+                    
+                    Flutter 入门基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../project-structure-resources.html">
+            
+                <a href="../project-structure-resources.html">
+            
+                    
+                        <b>2.4.</b>
+                    
+                    项目结构、资源、依赖和本地化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../know-view.html">
+            
+                <a href="../know-view.html">
+            
+                    
+                        <b>2.5.</b>
+                    
+                    认识视图（Views）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                        <b>2.6.</b>
+                    
+                    布局与列表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../state-manage.html">
+            
+                <a href="../state-manage.html">
+            
+                    
+                        <b>2.7.</b>
+                    
+                    状态管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../route-and-navigation.html">
+            
+                <a href="../route-and-navigation.html">
+            
+                    
+                        <b>2.8.</b>
+                    
+                    路由与导航
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" >
+            
+                <span>
+            
+                    
+                        <b>2.9.</b>
+                    
+                    手势检测及触摸事件处理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" >
+            
+                <span>
+            
+                    
+                        <b>2.10.</b>
+                    
+                    主题和文字处理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" >
+            
+                <span>
+            
+                    
+                        <b>2.11.</b>
+                    
+                    表单输入与富文本
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" >
+            
+                <span>
+            
+                    
+                        <b>2.12.</b>
+                    
+                    调用硬件、第三方服务以及平台交互、通知
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Dart SDK</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="dart_ui.html">
+            
+                <a href="dart_ui.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    库 dart:ui
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="dart_core.html">
+            
+                <a href="dart_core.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    库 dart:core
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.3" data-path="dart_async.html">
+            
+                <a href="dart_async.html">
+            
+                    
+                        <b>3.3.</b>
+                    
+                    库 dart:async
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="dart_collection.html">
+            
+                <a href="dart_collection.html">
+            
+                    
+                        <b>3.4.</b>
+                    
+                    库 dart:collection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="dart_convert.html">
+            
+                <a href="dart_convert.html">
+            
+                    
+                        <b>3.5.</b>
+                    
+                    库 dart:convert
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="dart_io.html">
+            
+                <a href="dart_io.html">
+            
+                    
+                        <b>3.6.</b>
+                    
+                    库 dart:io
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Flutter Widget</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../flutter_widget/listTile.html">
+            
+                <a href="../flutter_widget/listTile.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    listTile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../flutter_widget/listView.html">
+            
+                <a href="../flutter_widget/listView.html">
+            
+                    
+                        <b>4.2.</b>
+                    
+                    listView
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Flutter package</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../flutter_package/shared_preferences.html">
+            
+                <a href="../flutter_package/shared_preferences.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    package:shared_preferences
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../flutter_package/dio.html">
+            
+                <a href="../flutter_package/dio.html">
+            
+                    
+                        <b>5.2.</b>
+                    
+                    package:dio/dio.dart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../flutter_package/fluttertoast.html">
+            
+                <a href="../flutter_package/fluttertoast.html">
+            
+                    
+                        <b>5.3.</b>
+                    
+                    package:fluttertoast
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../flutter_package/cached_network_image.html">
+            
+                <a href="../flutter_package/cached_network_image.html">
+            
+                    
+                        <b>5.4.</b>
+                    
+                    package:cached_network_image
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../flutter_package/flukit.html">
+            
+                <a href="../flutter_package/flukit.html">
+            
+                    
+                        <b>5.5.</b>
+                    
+                    package:flukit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="../flutter_package/flutter_web_plugins.html">
+            
+                <a href="../flutter_package/flutter_web_plugins.html">
+            
+                    
+                        <b>5.6.</b>
+                    
+                    package:flutter_web_plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="../flutter_package/flutter_localizations.html">
+            
+                <a href="../flutter_package/flutter_localizations.html">
+            
+                    
+                        <b>5.7.</b>
+                    
+                    package:flutter_localizations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="../flutter_package/provider.html">
+            
+                <a href="../flutter_package/provider.html">
+            
+                    
+                        <b>5.8.</b>
+                    
+                    package:provider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">进阶</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903686787825678">
+            
+                    
+                        <b>6.1.</b>
+                    
+                    Dart | 什么是 Mixin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../advance/stream.html">
+            
+                <a href="../../advance/stream.html">
+            
+                    
+                        <b>6.2.</b>
+                    
+                    Dart | 什么是 Stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../../advance/dio-getting.html">
+            
+                <a href="../../advance/dio-getting.html">
+            
+                    
+                        <b>6.3.</b>
+                    
+                    Http 网络请求-dio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903777565147150">
+            
+                    
+                        <b>6.4.</b>
+                    
+                    深入理解 BuildContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903811870359559">
+            
+                    
+                        <b>6.5.</b>
+                    
+                    Flutter | 深入浅出 Key
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903780253728781">
+            
+                    
+                        <b>6.6.</b>
+                    
+                    Flutter | 状态管理特别篇 —— Provide
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903864852807694">
+            
+                    
+                        <b>6.7.</b>
+                    
+                    Flutter | 状态管理指南篇——Provider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" >
+            
+                <a target="_blank" href="https://juejin.im/post/6844903680844496904">
+            
+                    
+                        <b>6.8.</b>
+                    
+                    Flutter | 状态管理(1) - Scope Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.9" >
+            
+                <span>
+            
+                    
+                        <b>6.9.</b>
+                    
+                    Flutter | 状态管理(2) - react
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.10" data-path="../../advance/bloc.html">
+            
+                <a href="../../advance/bloc.html">
+            
+                    
+                        <b>6.10.</b>
+                    
+                    Flutter | 状态管理(3) - BLoC 模式入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.11" data-path="../../advance/rxdart.html">
+            
+                <a href="../../advance/rxdart.html">
+            
+                    
+                        <b>6.11.</b>
+                    
+                    Flutter | 状态管理(4) - RxDart
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >库 dart:async</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<p><a href="https://api.dart.dev/stable/2.6.0/dart-async/dart-async-library.html" target="_blank">&#x9605;&#x8BFB;&#x539F;&#x6587;</a></p>
+</blockquote>
+<h1 id="dartasync-&#x5E93;">dart:async &#x5E93;</h1>
+<p>&#x652F;&#x6301;&#x8BF8;&#x5982; Future &#x548C; Stream &#x4E4B;&#x7C7B;&#x7684;&#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#x3002;</p>
+<p>&#x4E86;&#x89E3; <a href="https://api.dart.dev/stable/2.6.0/dart-async/Future-class.html" target="_blank">Future</a>s &#x548C; <a href="https://api.dart.dev/stable/2.6.0/dart-async/Stream-class.html" target="_blank">Streams</a> &#x662F;&#x7F16;&#x5199;&#x4EFB;&#x4F55; Dart &#x7A0B;&#x5E8F;&#x7684;&#x5148;&#x51B3;&#x6761;&#x4EF6;&#x3002;</p>
+<p>&#x8981;&#x5728;&#x60A8;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528;&#x6B64;&#x5E93;&#xFF1A;</p>
+<pre><code class="lang-dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&apos;dart:async&apos;</span>;
+</code></pre>
+<h3 id="future">Future</h3>
+<p><code>Future</code> &#x5BF9;&#x8C61;&#x8868;&#x793A;&#x5176;&#x8FD4;&#x56DE;&#x503C;&#x53EF;&#x80FD;&#x5C1A;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x8BA1;&#x7B97;&#x3002;&#x5F53;&#x5C06;&#x6765;&#x67D0;&#x4E2A;&#x65F6;&#x5019;&#x5B8C;&#x6210;&#x65F6;&#xFF0C;Future &#x8FD4;&#x56DE;&#x8BA1;&#x7B97;&#x7684;&#x503C;&#x3002;Futures &#x901A;&#x5E38;&#x7528;&#x4E8E;&#x6F5C;&#x5728;&#x7684;&#x5197;&#x957F;&#x8BA1;&#x7B97;&#xFF0C;&#x4F8B;&#x5982; <code>I/O</code> &#x548C;&#x4E0E;&#x7528;&#x6237;&#x7684;&#x4EA4;&#x4E92;&#x3002;</p>
+<p>&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x65F6;&#xFF0C;Dart &#x5E93;&#x4E2D;&#x7684;&#x8BB8;&#x591A;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x8FD4;&#x56DE; Future&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5C06; <code>HttpServer</code> &#x7ED1;&#x5B9A;&#x5230;&#x4E3B;&#x673A;&#x548C;&#x7AEF;&#x53E3;&#x65F6;&#xFF0C;<code>bind()</code>&#x65B9;&#x6CD5;&#x5C06;&#x8FD4;&#x56DE; Future&#x3002;</p>
+<pre><code class="lang-dart">HttpServer.bind(<span class="hljs-string">&apos;127.0.0.1&apos;</span>, <span class="hljs-number">4444</span>)
+     .then((server) =&gt; <span class="hljs-built_in">print</span>(<span class="hljs-string">&apos;<span class="hljs-subst">${server.isBroadcast}</span>&apos;</span>))
+     .catchError(<span class="hljs-built_in">print</span>);
+</code></pre>
+<p><code>Future.then</code> &#x6CE8;&#x518C;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5728; <code>Future</code> &#x7684;&#x64CD;&#x4F5C;&#xFF08;&#x5728;&#x672C;&#x4F8B;&#x4E2D;&#x4E3A; <code>bind()</code>&#x65B9;&#x6CD5;&#xFF09;&#x6210;&#x529F;&#x5B8C;&#x6210;&#x65F6;&#x8FD0;&#x884C;&#x3002;&#x8BE5;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x7684;&#x503C;&#x5C06;&#x4F20;&#x9012;&#x5230;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E2D;&#x3002;&#x5728;&#x6B64;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;<code>bind()</code> &#x65B9;&#x6CD5;&#x8FD4;&#x56DE; <code>HttpServer</code> &#x5BF9;&#x8C61;&#x3002;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5C06;&#x6253;&#x5370;&#x5176;&#x5C5E;&#x6027;&#x4E4B;&#x4E00;&#x3002; <code>Future.catchError</code> &#x6CE8;&#x518C;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x5728; <code>Future</code> &#x4E2D;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5C06;&#x8FD0;&#x884C;&#x3002;</p>
+<h3 id="stream">Stream</h3>
+<p>Stream &#x63D0;&#x4F9B;&#x5F02;&#x6B65;&#x7684;&#x6570;&#x636E;&#x5E8F;&#x5217;&#x3002;&#x6570;&#x636E;&#x5E8F;&#x5217;&#x7684;&#x793A;&#x4F8B;&#x5305;&#x62EC;&#x5355;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF08;&#x4F8B;&#x5982;&#x9F20;&#x6807;&#x5355;&#x51FB;&#xFF09;&#x6216;&#x8F83;&#x5927;&#x6570;&#x636E;&#x7684;&#x8FDE;&#x7EED;&#x5757;&#xFF08;&#x200B;&#x200B; &#x4F8B;&#x5982;&#x5E26;&#x6709;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x7684;&#x591A;&#x4E2A;&#x5B57;&#x8282;&#x5217;&#x8868;&#xFF0C;&#x4F8B;&#x5982;&#x9F20;&#x6807;&#x5355;&#x51FB;&#xFF09;&#x4EE5;&#x53CA;&#x4ECE;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x7684;&#x5B57;&#x8282;&#x5217;&#x8868;&#x6D41;&#x3002;&#x4EE5;&#x4E0B;&#x793A;&#x4F8B;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4EE5;&#x4F9B;&#x8BFB;&#x53D6;&#x3002; <code>Stream.listen</code> &#x6CE8;&#x518C;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5728;&#x6BCF;&#x6B21;&#x6709;&#x66F4;&#x591A;&#x6570;&#x636E;&#x53EF;&#x7528;&#x65F6;&#x8FD0;&#x884C;&#x3002;</p>
+<pre><code class="lang-dart">Stream&lt;<span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">int</span>&gt;&gt; stream = <span class="hljs-keyword">new</span> File(<span class="hljs-string">&apos;quotes.txt&apos;</span>).openRead();
+stream.transform(utf8.decoder).listen(<span class="hljs-built_in">print</span>);
+</code></pre>
+<p>&#x8BE5;&#x6D41;&#x53D1;&#x51FA;&#x4E00;&#x7CFB;&#x5217;&#x5B57;&#x8282;&#x5217;&#x8868;&#x3002;&#x7A0B;&#x5E8F;&#x5FC5;&#x987B;&#x89E3;&#x91CA;&#x5B57;&#x8282;&#x6216;&#x5904;&#x7406;&#x539F;&#x59CB;&#x5B57;&#x8282;&#x6570;&#x636E;&#x3002;&#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x4EE3;&#x7801;&#x4F7F;&#x7528; <code>UTF-8</code> &#x89E3;&#x7801;&#x5668;&#xFF08;&#x5728; <code>dart:convert</code> &#x5E93;&#x4E2D;&#x63D0;&#x4F9B;&#xFF09;&#x5C06;&#x5B57;&#x8282;&#x5E8F;&#x5217;&#x8F6C;&#x6362;&#x4E3A; Dart &#x5B57;&#x7B26;&#x4E32;&#x5E8F;&#x5217;&#x3002;</p>
+<p>&#x6D41;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x5E38;&#x89C1;&#x7528;&#x6CD5;&#x662F;&#x7528;&#x4E8E; Web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x7528;&#x6237;&#x751F;&#x6210;&#x7684;&#x4E8B;&#x4EF6;&#xFF1A;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x4FA6;&#x542C;&#x6309;&#x94AE;&#x4E0A;&#x7684;&#x9F20;&#x6807;&#x5355;&#x51FB;&#x3002;</p>
+<pre><code class="lang-dart"><span class="hljs-built_in">querySelector</span>(<span class="hljs-string">&apos;#myButton&apos;</span>).onClick.listen((_) =&gt; <span class="hljs-built_in">print</span>(<span class="hljs-string">&apos;Click.&apos;</span>));
+</code></pre>
+<h3 id="&#x5176;&#x4ED6;&#x8D44;&#x6E90;">&#x5176;&#x4ED6;&#x8D44;&#x6E90;</h3>
+<ul>
+<li><p><a href="https://www.dartlang.org/docs/dart-up-and-running/ch03.html#dartasync---asynchronous-programming" target="_blank">dart:async &#x5E93;&#x4E4B;&#x65C5;</a>: &#x5F02;&#x6B65;&#x7684;&#x7B80;&#x8981;&#x6982;&#x8FF0;&#x3002;</p>
+</li>
+<li><p><a href="https://www.dartlang.org/docs/tutorials/futures/" target="_blank">Use Future-Based APIs</a>: &#x4ED4;&#x7EC6;&#x7814;&#x7A76; Futures &#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x7F16;&#x5199;&#x5F02;&#x6B65; Dart &#x4EE3;&#x7801;&#x3002;</p>
+</li>
+<li><p><a href="https://www.dartlang.org/articles/futures-and-error-handling/" target="_blank">Futures &#x4E0E;&#x9519;&#x8BEF;&#x5904;&#x7406;</a>: &#x60A8;&#x60F3;&#x8981;&#x4E86;&#x89E3;&#x4E0E;&#x4F7F;&#x7528; Future &#x65F6;&#x5904;&#x7406;&#x9519;&#x8BEF;&#x548C;&#x5F02;&#x5E38;&#x6709;&#x5173;&#x7684;&#x6240;&#x6709;&#x4FE1;&#x606F;&#xFF08;&#x4F46;&#x4E0D;&#x6562;&#x95EE;&#xFF09;&#x3002;</p>
+</li>
+<li><p><a href="https://www.dartlang.org/articles/event-loop/" target="_blank">&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x4E0E; Dart</a>: &#x4E86;&#x89E3; Dart &#x5982;&#x4F55;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x961F;&#x5217;&#x548C;&#x5FAE;&#x4EFB;&#x52A1;&#x961F;&#x5217;&#xFF0C;&#x4EE5;&#x4FBF;&#x60A8;&#x7F16;&#x5199;&#x5177;&#x6709;&#x66F4;&#x5C11;&#x201C;&#x60CA;&#x559C;&#x201D;&#x7684;&#x66F4;&#x597D;&#x7684;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#x3002;</p>
+</li>
+<li><p><a href="https://pub.dartlang.org/packages/test" target="_blank">test package: Asynchronous Tests</a>: &#x5982;&#x4F55;&#x6D4B;&#x8BD5;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#x3002;</p>
+</li>
+</ul>
+<h2 id="&#x7C7B;">&#x7C7B;</h2>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="dart_core.html" class="navigation navigation-prev " aria-label="Previous page: 库 dart:core">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="dart_collection.html" class="navigation navigation-next " aria-label="Next page: 库 dart:collection">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"库 dart:async","level":"3.3","depth":1,"next":{"title":"库 dart:collection","level":"3.4","depth":1,"path":"jichu/dart_sdk/dart_collection.md","ref":"jichu/dart_sdk/dart_collection.md","articles":[]},"previous":{"title":"库 dart:core","level":"3.2","depth":1,"path":"jichu/dart_sdk/dart_core.md","ref":"jichu/dart_sdk/dart_core.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight","-search","-theme-comscore","-anchor-navigation-ex-toc","fontsettings","sharing","search-plus","intopic-toc"],"root":".","styles":{"website":"./styles/website.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":{"en":"In this article"},"maxDepth":4,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"highlight":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"search-plus":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false}},"theme":"default","author":"G-Dragon","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Flutter 学习笔记","language":"zh-hans","gitbook":">=3.0.0","description":""},"file":{"path":"jichu/dart_sdk/dart_async.md","mtime":"2020-09-02T06:30:39.378Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-02T08:14:43.679Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+
+    </body>
+</html>
+
